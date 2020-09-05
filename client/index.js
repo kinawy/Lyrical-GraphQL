@@ -1,15 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ApolloClient from 'apollo-client'
+// This is set up for root
 import { ApolloProvider } from 'react-apollo'
+import ApolloClient from 'apollo-client'
+import { createHttpLink, HttpLink } from 'apollo-link-http'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+
+import SongList from './components/SongList'
 // THIS IS MIN CONFIG FOR APOLLO/ REACT, YOU SHOULD BE ABLE TO DO QUERIES AS IS
-const client = new ApolloClient({})
+const client = new ApolloClient({
+  link: HttpLink,
+  cache: new InMemoryCache()
+})
 
 const Root = () => {
   return (
     // the glue between react and graphql/apollo world, its shovelling data over to the react side of the application
     <ApolloProvider client={client}>
-    <div>Lyrical</div>
+    <SongList />
     </ApolloProvider>
   )
 };
