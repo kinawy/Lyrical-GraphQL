@@ -20,12 +20,11 @@ const Root = () => {
   return (
     // the glue between react and graphql/apollo world, its shovelling data over to the react side of the application
     <ApolloProvider client={client}>
-      <Router history={hashHistory}>
+       <Router history={hashHistory}> 
         <Route path='/' component={App}>
           <IndexRoute component={SongList} />
         </Route>
-      </Router>
-      <SongList />
+       </Router> 
     </ApolloProvider>
   )
 }
