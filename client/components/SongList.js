@@ -4,9 +4,7 @@ import { graphql } from "react-apollo"
 
 const SongList = (props) => {
   let renderSongs = () => {
-    console.log(props.data.songs)
     let songs = props.data.songs.map((song, i) => {
-      console.log(song.title)
       return (
         <li key={i} className='collection-item'>
           {song.title}
@@ -43,6 +41,5 @@ const query = gql`
     }
   }
 `
-console.log(query)
 
 export default graphql(query)(SongList)
